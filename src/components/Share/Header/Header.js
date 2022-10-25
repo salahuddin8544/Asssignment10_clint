@@ -1,34 +1,83 @@
-import React from 'react';
+import React,{useContext, useState} from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import { Image } from 'react-bootstrap';
-import img from '../image/logo.png'
+import { Button, Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import img from '../image/logo.png';
+import  {lightTheme,darkTheme,GlobalStyles} from '../theme/Theme';
+import styled, { ThemeProvider } from "styled-components";
+import { FaSun,FaStarAndCrescent } from "react-icons/fa";
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+
+
+const StyledApp = styled.div`
+  color: ${(props) => props.theme.fontColor};
+`;
 const Header = () => {
+  const {user} = useContext(AuthContext)
+  const [theme, setTheme] = useState("light");
+  const themeToggler = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <GlobalStyles />
+      <StyledApp>
+        <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
         <Container>
         <Image className='me-2'
             src={img}
             roundedCircle
             style={{width:'50px'}}
           ></Image>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="#home">Diploma Engineering</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <Nav.Link href="#features">Courses</Nav.Link>
+              <Nav.Link href="#pricing">FAQ</Nav.Link>
+              <Nav.Link href="#pricing">Blog</Nav.Link>
+              <Nav.Link href="#pricing"> 
+              {
+                theme === "light" ?
+                <>
+                <Button className='m-0 p-0' onClick={() => themeToggler()}>Dark <FaStarAndCrescent></FaStarAndCrescent></Button>
+                
+                </>
+                :
+                <>
+                
+                <Button className='m-0 p-0' onClick={() => themeToggler()}>Light <FaSun></FaSun></Button>
+                </>
+              }
+              </Nav.Link>
+            
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">More deets</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
-                Dank memes
-              </Nav.Link>
+              <>
+                {
+                  user?.uid?
+                  <>
+                    <span>{user?.displayName}</span>
+                    <Button>Log out</Button>
+                  </>
+                  :
+                  <>
+                       <Link to='/login'>Login</Link>
+              <Link  to='/register'>
+               Register
+              </Link>
+                  </>
+                }
+              </>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      </StyledApp>
+    </ThemeProvider>
     );
 };
 
