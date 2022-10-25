@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {RouterProvider} from 'react-router-dom'
@@ -8,5 +8,4 @@ function App() {
     <RouterProvider router={router}></RouterProvider>
   );
 }
-
 export default App;
