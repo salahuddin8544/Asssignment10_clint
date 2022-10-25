@@ -9,8 +9,7 @@ import  {lightTheme,darkTheme,GlobalStyles} from '../theme/Theme';
 import styled, { ThemeProvider } from "styled-components";
 import { FaSun,FaStarAndCrescent } from "react-icons/fa";
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
-
-
+import { FaUser } from 'react-icons/fa';
 const StyledApp = styled.div`
   color: ${(props) => props.theme.fontColor};
 `;
@@ -24,7 +23,7 @@ const Header = () => {
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
       <StyledApp>
-        <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="info" variant="dark">
         <Container>
         <Image className='me-2'
             src={img}
@@ -71,6 +70,18 @@ const Header = () => {
                   </>
                 }
               </>
+              <Link>
+              {
+                user?.photoURL?
+                <Image
+                roundedCircle
+                src={user.photoURL}
+                style={{height:'30px'}}
+                  ></Image>
+                :
+                <FaUser></FaUser>
+              }
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
