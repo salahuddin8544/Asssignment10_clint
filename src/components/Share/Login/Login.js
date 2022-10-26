@@ -3,8 +3,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import { useLocation, useNavigate } from 'react-router-dom';
 const Login = () => {
     const [error, setError] = useState('');
+    const naviGate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const {signIn,googleSignIn,githubSignIn} =useContext(AuthContext)
     const googleSign = ()=>{
         googleSignIn()
@@ -12,6 +16,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             setError('')
+            naviGate(from,{replace:true})
         })
         .catch((error)=>{
             console.log(error);
@@ -24,6 +29,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             setError('')
+            naviGate(from,{replace:true})
         })
         .catch((error)=>{
             console.log(error)
@@ -42,6 +48,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             setError('')
+            naviGate(from,{replace:true})
         })
         .catch(error=>{
             console.log(error)

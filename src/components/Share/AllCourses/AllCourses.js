@@ -4,9 +4,7 @@ import { Image } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 const AllCourses = ({course}) => {
-    console.log(course);
     const {name,description,photoURL,id} = course
-    console.log(description);
     return (
         <Card className="text-center">
         <Card.Body>
