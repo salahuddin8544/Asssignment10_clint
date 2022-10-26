@@ -11,9 +11,6 @@ const Courses = () => {
       <Card.Img variant="top" />
       <Card.Body>
           <Card.Title>{name}</Card.Title>
-          <Card.Text>
-              {name}
-          </Card.Text>
           <Link to={`/category/${id}`}>
           </Link>
       </Card.Body>
