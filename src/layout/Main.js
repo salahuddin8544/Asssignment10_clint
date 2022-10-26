@@ -9,10 +9,10 @@ const Main = () => {
             <Header></Header>
             <Container>
                <Row>
-                    <Col lg="4" className=''>
+                    <Col lg="2" className=''>
                         <LeftSide></LeftSide>
                     </Col>
-                    <Col lg="8" className=''>
+                    <Col lg="10" className=''>
                         <Outlet></Outlet>
                         
                     </Col>

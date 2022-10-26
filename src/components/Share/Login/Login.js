@@ -1,9 +1,36 @@
-import React,{useContext} from 'react';
+import React,{useContext,useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 const Login = () => {
-    const {signIn} =useContext(AuthContext)
+    const [error, setError] = useState('');
+    const {signIn,googleSignIn,githubSignIn} =useContext(AuthContext)
+    const googleSign = ()=>{
+        googleSignIn()
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+            setError('')
+        })
+        .catch((error)=>{
+            console.log(error);
+            setError(error.message)
+        })
+    }
+    const githubSign = ()=>{
+        githubSignIn()
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+            setError('')
+        })
+        .catch((error)=>{
+            console.log(error)
+            setError(error.message);
+        })
+        
+    }
     const handleLogin = (event)=>{
         event.preventDefault();
         const form = event.target;
@@ -14,9 +41,11 @@ const Login = () => {
         .then(result=>{
             const user = result.user;
             console.log(user);
+            setError('')
         })
         .catch(error=>{
-            console.log(error);
+            console.log(error)
+            setError(error.message)
         })
     }
     return (
@@ -33,7 +62,13 @@ const Login = () => {
         <Button variant="primary" type="submit">
             Login
         </Button>
+        <Button onClick={googleSign} className='d-block mt-2'><FaGoogle></FaGoogle> Login with Google</Button>
+        <Button onClick={githubSign} className='d-block mt-2'><FaGoogle></FaGoogle> Login with Gihub</Button>
+        <Form.Text className="text-danger">
+            {error}
+        </Form.Text>
     </Form>
+   
     );
 };
 

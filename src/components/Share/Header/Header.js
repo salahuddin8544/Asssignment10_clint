@@ -21,6 +21,11 @@ const Header = () => {
   };
   const signOut = ()=>{
     logOut()
+    .then(()=>{})
+    .catch((error)=>{
+      console.error(error);
+    })
+    console.log('clicked');
   }
     return (
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
@@ -33,7 +38,7 @@ const Header = () => {
             roundedCircle
             style={{width:'50px'}}
           ></Image>
-          <Navbar.Brand href="#home">Diploma Engineering</Navbar.Brand>
+          <Navbar.Brand><Link to='/'>Diploma Engineering</Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -61,8 +66,7 @@ const Header = () => {
                 {
                   user?.uid?
                   <>
-                    <span>{user?.displayName}</span>
-                    <Button>Log out</Button>
+                    <Button onClick={signOut}>Log out</Button>
                   </>
                   :
                   <>
@@ -77,6 +81,7 @@ const Header = () => {
               {
                 user?.photoURL?
                 <Image
+                title={user?.displayName}
                 roundedCircle
                 src={user.photoURL}
                 style={{height:'30px'}}
