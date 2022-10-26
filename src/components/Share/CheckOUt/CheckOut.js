@@ -1,12 +1,22 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 const CheckOut = () => {
-    const check = useLoaderData()
-    console.log(check);
+    const checkout = useLoaderData()
+    const{photoURL,name,Price}= checkout;
     return (
-        <div>
-            <h2>This is chek</h2>
+        <div className='mt-2'>
+            <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={photoURL} />
+      <Card.Body>
+        <Card.Title>{name}</Card.Title>
+        <Card.Text>
+          
+        </Card.Text>
+        <Button variant="primary">Price {Price}</Button>
+      </Card.Body>
+    </Card>
         </div>
     );
 };
