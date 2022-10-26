@@ -14,11 +14,14 @@ const StyledApp = styled.div`
   color: ${(props) => props.theme.fontColor};
 `;
 const Header = () => {
-  const {user} = useContext(AuthContext)
+  const {user,logOut} = useContext(AuthContext)
   const [theme, setTheme] = useState("light");
   const themeToggler = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
+  const signOut = ()=>{
+    logOut()
+  }
     return (
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
@@ -63,7 +66,7 @@ const Header = () => {
                   </>
                   :
                   <>
-                       <Link to='/login'>Login</Link>
+                       <Link onClick={signOut} to='/login'>Login</Link>
               <Link  to='/register'>
                Register
               </Link>
