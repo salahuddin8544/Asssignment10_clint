@@ -34,8 +34,8 @@ const Register = () => {
     return (
         <Form  onSubmit={handleRegister}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Name</Form.Label>
-            <Form.Control name="name" type="text" placeholder="Name" />
+            <Form.Label>Full Name</Form.Label>
+            <Form.Control name="name" type="text" placeholder="Full Name" />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Photo URL</Form.Label>

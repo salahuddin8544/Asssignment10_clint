@@ -52,6 +52,11 @@ export const router = createBrowserRouter([
                 path:'/faq',
                 element:<Faq></Faq>
             }
+            
         ]
+    },
+    {
+        path:'/*',
+        element: <h3 className="text-center">4o4 Data not Found</h3>
     }
 ])
