@@ -7,8 +7,7 @@ const Home = () => {
     return (
         <div>
             {
-                courses.map(course=> <AllCourses key={course.id}
-                
+                courses.map(course=> <AllCourses key={course.id} 
                     course={course}
                 >
                    

@@ -1,19 +1,26 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { Image } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 const Courses = () => {
     const Allcourses = useLoaderData()
     console.log(Allcourses);
     const {name,description,photoURL,id} = Allcourses;
     return (
-      <Card>
+      <Card className='mt-4 mb-4'>
       <Card.Img variant="top" />
       <Card.Body>
-          <Card.Title>{name}</Card.Title>
-          <Link to={`/category/${id}`}>
-          </Link>
+      <Card.Title><h3>{name}</h3></Card.Title>
+      <Image className='w-100'
+          src={photoURL}
+          >
+          </Image>
+          <Card.Text>
+            <p>{description}</p>
+          </Card.Text>
+          <Link to={`/checkout/${id}`}>Checkout</Link>
       </Card.Body>
+     
   </Card>
     );
 };

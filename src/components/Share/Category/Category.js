@@ -7,7 +7,6 @@ const Category = () => {
     console.log(categoryCourse);
     return (
         <div>
-            <h2>This is category</h2>
             {
                 categoryCourse.map(course=> <AllCourses
                     key={course.id}

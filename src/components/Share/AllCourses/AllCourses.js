@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 const AllCourses = ({course}) => {
     const {name,description,photoURL,id} = course
     return (
-        <Card className="text-center">
+        <Card className="text-center mb-2 mt-4">
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
+          <Card.Title><h3>{name}</h3></Card.Title>
           <Image className='w-100'
           src={photoURL}
           >
@@ -22,7 +22,6 @@ const AllCourses = ({course}) => {
                     }
           </Card.Text>
         </Card.Body>
-        <Card.Footer className="text-muted">2 days ago</Card.Footer>
       </Card>
     );
 };
