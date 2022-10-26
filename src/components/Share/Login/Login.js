@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 const Login = () => {
     const [error, setError] = useState('');
     const naviGate = useNavigate();
@@ -69,6 +69,7 @@ const Login = () => {
         <Button variant="primary" type="submit">
             Login
         </Button>
+        <p>You dont't have an account? <Link to='/register'>Register</Link></p>
         <Button onClick={googleSign} className='d-block mt-2'><FaGoogle></FaGoogle> Login with Google</Button>
         <Button onClick={githubSign} className='d-block mt-2'><FaGoogle></FaGoogle> Login with Gihub</Button>
         <Form.Text className="text-danger">
