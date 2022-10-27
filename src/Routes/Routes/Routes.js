@@ -19,22 +19,22 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/course')
+                loader: () => fetch('https://diploma-engineering-server.vercel.app/course')
             },
             {
                 path: '/category/:id',
                 element: <Category></Category>,
-                loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({params}) => fetch(`https://diploma-engineering-server.vercel.app/category/${params.id}`)
             },
             {
                 path: '/course/:id',
                 element:<Courses></Courses>,
-                loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({params}) => fetch(`https://diploma-engineering-server.vercel.app/courses/${params.id}`)
             },
             {
                 path: '/checkout/:id',
                 element:<PrivateRoutes><CheckOut></CheckOut></PrivateRoutes>,
-                loader: ({params}) => fetch(`http://localhost:5000/checkout/${params.id}`)
+                loader: ({params}) => fetch(`https://diploma-engineering-server.vercel.app/checkout/${params.id}`)
             },
             {
                 path:'/login',
